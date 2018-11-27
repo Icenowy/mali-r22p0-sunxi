@@ -3826,14 +3826,14 @@ static int power_control_init(struct platform_device *pdev)
 		goto fail;
 	}
 
-	kbdev->bus_clk = of_clk_get(kbdev->dev->of_node, 1);
+	kbdev->bus_clk = of_clk_get_by_name(kbdev->dev->of_node, "bus");
 	if (IS_ERR(kbdev->bus_clk)) {
 		dev_err(kbdev->dev, "Couldn't get the mali bus clock\n");
 		err = PTR_ERR(kbdev->bus_clk);
 		goto fail;
 	}
 
-	kbdev->clock = of_clk_get(kbdev->dev->of_node, 0);
+	kbdev->clock = of_clk_get_by_name(kbdev->dev->of_node, "core");
 	if (IS_ERR_OR_NULL(kbdev->clock)) {
 		err = PTR_ERR(kbdev->clock);
 		kbdev->clock = NULL;
