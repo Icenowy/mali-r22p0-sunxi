@@ -3869,6 +3869,8 @@ static int power_control_init(struct platform_device *pdev)
 		dev_dbg(kbdev->dev, "OPP table not found\n");
 #endif /* CONFIG_OF && CONFIG_PM_OPP */
 
+	dev_info(kbdev->dev, "init power control success\n");
+
 	return 0;
 
 fail:
